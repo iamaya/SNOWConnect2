@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SNOWConnect2
+namespace SNOWConnect2.Views
 {
-    public partial class Incidents
+    public partial class Hub
     {
-        public Incidents()
+        public Hub()
         {
             InitializeComponent();
         }

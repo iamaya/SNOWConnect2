@@ -22,6 +22,8 @@ namespace SNOWConnect2
             //};
 
             return new Home();
+            //return new MyIncidents();
+            
 
         }
     }

@@ -14,27 +14,34 @@ namespace SNOWConnect2
         {
             InitializeComponent();
 
-            HomeViewModel model = new HomeViewModel(typeof(Incidents), NavigateTo);
-            this.BindingContext = model;
+            HomeViewModel viewmodel = new HomeViewModel(NavigateTo);
+            this.BindingContext = viewmodel;
         }
 
-        async void NavigateTo(Type pageType)
+        void NavigateTo(MyIncidents pageType)
         {
             // Get all the constructors of the page type.
-            IEnumerable<ConstructorInfo> constructors =
-                    pageType.GetTypeInfo().DeclaredConstructors;
+            //IEnumerable<ConstructorInfo> constructors =
+            //        pageType.GetTypeInfo().DeclaredConstructors;
 
-            foreach (ConstructorInfo constructor in constructors)
-            {
-                // Check if the constructor has no parameters.
-                if (constructor.GetParameters().Length == 0)
-                {
-                    // If so, instantiate it, and navigate to it.
-                    Page page = (Page)constructor.Invoke(null);
-                    await this.Navigation.PushAsync(page);
-                    break;
-                }
-            }
+            //foreach (ConstructorInfo constructor in constructors)
+            //{
+            //    // Check if the constructor has no parameters.
+            //    if (constructor.GetParameters().Length == 0)
+            //    {
+            //        // If so, instantiate it, and navigate to it.
+            //        Page page = (Page)constructor.Invoke(null);
+            //        this.Navigation.PushAsync(page);
+
+                    
+            //        break;
+            //    }
+            //}
+            //this.Navigation.PushAsync(pageType);
+
+            DisplayAlert("alert", "Success", "OK", null);
+
+
         }
     }
 }

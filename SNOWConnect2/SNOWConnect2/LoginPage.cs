@@ -35,6 +35,10 @@ namespace SNOWConnect2
                    };
             username.SetBinding(Entry.TextProperty, "UserName");
 
+            ViewCell cell = new ViewCell() { 
+            
+            };
+
             Entry password = new Entry
             {
                 Placeholder = "Password",
@@ -44,7 +48,9 @@ namespace SNOWConnect2
             };
             password.SetBinding(Entry.TextProperty, "Password");
 
-            Label statusMessage = new Label();
+            Label statusMessage = new Label() { 
+            HeightRequest = 50, TextColor = Color.Aqua
+            };
 
             statusMessage.SetBinding(Label.TextProperty, "StatusMessage");
 

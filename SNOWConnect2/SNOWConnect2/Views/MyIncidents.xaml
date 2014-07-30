@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SNOWConnect2.ViewModels;assembly=SNOWConnect2"
+					   x:Class="SNOWConnect2.MyIncidents">
+  
+  <ContentPage.BindingContext>
+    <local:MyIncidentsViewModel />
+  </ContentPage.BindingContext>
+
+  <StackLayout Padding="20,50">
+    <Label Text="Incidents" Font="Bold, Large" HeightRequest="50"/>
+    <ListView 
+    ItemsSource="{Binding Path=Response}">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Padding="5, 5, 0, 5"
+                        Orientation="Vertical"
+                        Spacing="15">
+              <Label Text="{Binding Path=number}" TextColor="Aqua"/>
+              
+              <Label Text="{Binding Path=short_description}"
+                       Font="Bold, Medium" />
+              
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+
+  </ListView>
+  </StackLayout>
+</ContentPage>

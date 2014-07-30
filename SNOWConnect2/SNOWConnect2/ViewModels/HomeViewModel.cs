@@ -26,21 +26,36 @@ namespace SNOWConnect2
 
         private ILoginService loginService = new LoginService();
 
-        public HomeViewModel(Type pageType, Action<Type> navigateTo )
+        public HomeViewModel(Action<MyIncidents> navigateTo)
         {
-            this.PageType = pageType;
-            this.PageName = pageType.Name;
-
-            this.LoginCommand = new Command(() => {
+            this.LoginCommand = new Command(() =>
+            {
                 loginService.AttemptLogin(DomainName, UserName, Password,
-                    successs => { //StatusMessage = successs.result.First().short_description;
-                        this.NavigateCommand = new Command<Type>(navigateTo);
-                        this.NavigateCommand.Execute(pageType);
+                   successs =>
+                    {
+                        //StatusMessage = successs.result.First().short_description;
+                        navigateTo.Invoke(new MyIncidents());
                     },
                     error => { StatusMessage = "Login Failed. Please check your credentials."; });
                 //StatusMessage = "Login Error";
-            }); 
+            });
         }
+
+        //public HomeViewModel()
+        //{
+        //    this.LoginCommand = new Command(() =>
+        //    {
+        //        loginService.AttemptLogin(DomainName, UserName, Password,
+        //            successs =>
+        //            {
+        //                StatusMessage = successs.result.First().short_description;
+        //                //this.NavigateCommand = new Command<Type>(navigateTo);
+        //                //this.NavigateCommand.Execute(pageType);
+        //            },
+        //            error => { StatusMessage = "Login Failed. Please check your credentials."; });
+        //        //StatusMessage = "Login Error";
+        //    });
+        //}
 
         public string DomainName
         {

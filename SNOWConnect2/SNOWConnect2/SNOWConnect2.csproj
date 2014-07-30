@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B92F2740-9501-4A67-9ABA-42E051837C50}</ProjectGuid>
@@ -34,10 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="API\RESTAccess.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Views\Incidents.xaml.cs">
-      <DependentUpon>Incidents.xaml</DependentUpon>
+    <Compile Include="Models\MyIncidents.cs" />
+    <Compile Include="Services\MyIncidentsService.cs" />
+    <Compile Include="ViewModels\MyIncidentsViewModel.cs" />
+    <Compile Include="Views\Hub.xaml.cs">
+      <DependentUpon>Hub.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyIncidents.xaml.cs">
+      <DependentUpon>MyIncidents.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -70,9 +75,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Incidents.xaml">
+    <EmbeddedResource Include="Views\MyIncidents.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Hub.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
